@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "target.h"
 
-XiaoC3Board board;
+CheapC3Sx1262Board board;
 
 RADIO_CLASS radio = new Module(P_LORA_NSS, P_LORA_DIO_1, P_LORA_RESET, P_LORA_BUSY);
 

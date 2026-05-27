@@ -6,7 +6,7 @@
 #include <driver/rtc_io.h>
 #include <driver/uart.h>
 
-class XiaoC3Board : public ESP32Board {
+class CheapC3Sx1262Board : public ESP32Board {
 public:
   void begin() {
     ESP32Board::begin();
@@ -34,6 +34,9 @@ public:
   #ifdef PIN_VBAT_READ
     // battery read support
     pinMode(PIN_VBAT_READ, INPUT);
+    gpio_pullup_dis((gpio_num_t)PIN_VBAT_READ);
+    gpio_pulldown_dis((gpio_num_t)PIN_VBAT_READ);
+    analogSetPinAttenuation(PIN_VBAT_READ, ADC_11db);
   #endif
 
   #ifdef LORA_TX_BOOST_PIN
@@ -98,6 +101,8 @@ public:
   #endif
   }
 #endif
+#define MAX_ADC_RANGE 2.8f
+#define VOLT_DIVIDER_RATIO 1.0f
 
   uint16_t getBattMilliVolts() override {
   #ifdef PIN_VBAT_READ
@@ -107,14 +112,15 @@ public:
       raw += analogRead(PIN_VBAT_READ);
     }
     raw = raw / 8;
+    //Serial.print("  RAW ADC="); Serial.println(raw);
 
-    return ((5.78 * raw) / 1024.0) * 1000;
+    return ((MAX_ADC_RANGE * raw) / 1024.0) * 1000 * VOLT_DIVIDER_RATIO;
   #else
     return 0;  // not supported
   #endif
   }
 
   const char* getManufacturerName() const override {
-    return "Xiao C3";
+    return "Elcheapo esp32c3 HT-RA62";
   }
 };

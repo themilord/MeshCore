@@ -3,7 +3,7 @@
 #define RADIOLIB_STATIC_ONLY 1
 #include <RadioLib.h>
 #include <helpers/radiolib/RadioLibWrappers.h>
-#include <XiaoC3Board.h>
+#include <CheapC3-Sx1262-Board.h>
 #include <helpers/radiolib/CustomSX1262Wrapper.h>
 #include <helpers/AutoDiscoverRTCClock.h>
 #include <helpers/sensors/EnvironmentSensorManager.h>
@@ -12,7 +12,7 @@
   #include <helpers/ui/NullDisplayDriver.h>
 #endif
 
-extern XiaoC3Board board;
+extern CheapC3Sx1262Board board;
 extern WRAPPER_CLASS radio_driver;
 extern AutoDiscoverRTCClock rtc_clock;
 extern EnvironmentSensorManager sensors;
