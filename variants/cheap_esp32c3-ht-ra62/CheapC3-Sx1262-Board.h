@@ -102,7 +102,7 @@ public:
   }
 #endif
 #define MAX_ADC_RANGE 2.8f
-#define VOLT_DIVIDER_RATIO 1.0f
+#define VOLT_DIVIDER_RATIO 4.82f //100k and 382k resistors)
 
   uint16_t getBattMilliVolts() override {
   #ifdef PIN_VBAT_READ
