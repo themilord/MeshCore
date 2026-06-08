@@ -101,7 +101,7 @@ public:
   #endif
   }
 #endif
-#define MAX_ADC_RANGE 2.8f
+#define MAX_ADC_RANGE 3.3f
 #define VOLT_DIVIDER_RATIO 4.82f //100k and 382k resistors)
 
   uint16_t getBattMilliVolts() override {
